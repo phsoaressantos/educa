@@ -27,7 +27,7 @@ public class RecursoController {
     @Autowired
     private AutorRepository autorRepository;
 
-    //testar pagina controller, ok!
+//    testar pagina controller, ok!
 //    public String recurso() {
 //        return "Ola! Aqui temos os Recursos educacionais:";
 //    }
