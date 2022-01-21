@@ -28,8 +28,16 @@ public class Recurso {
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
-//    public Recurso () {
-//    }
+    public Recurso () {
+    }
+
+    public Recurso(String titulo, String descricao, String dataCriacao, String dataRegistro, Autor autor) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.dataCriacao = dataCriacao;
+        this.dataRegistro = dataRegistro;
+        this.autor = autor;
+    }
 
     // Get And Setters
 
