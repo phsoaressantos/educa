@@ -49,6 +49,7 @@ public class RecursoController {
 
     // cadastrar um recurso
     @PostMapping
+    @Transactional
     public ResponseEntity<RecursoDto> cadastrar (@RequestBody RecursoForm form, UriComponentsBuilder uriBuilder){
         Recurso recurso = form.converter(autorRepository);
         recursoRepository.save(recurso);
@@ -77,8 +78,10 @@ public class RecursoController {
     // deletar recurso
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<RecursoDto> remover(@PathVariable Long id){
-
+    @Transactional
+    public ResponseEntity<?> remover(@PathVariable Long id){
+        recursoRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
     //put ou post para update
