@@ -8,6 +8,7 @@ import com.example.educa.repository.RecursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,7 +17,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/recurso")
+@RequestMapping("/recursos")
 
 public class RecursoController {
 
@@ -26,13 +27,15 @@ public class RecursoController {
     @Autowired
     private AutorRepository autorRepository;
 
-
     //testar pagina controller, ok!
 //    public String recurso() {
 //        return "Ola! Aqui temos os Recursos educacionais:";
 //    }
 
     // busca pelo nome autor, caso nao tenha vai trazer tudo
+
+    // Listar todos os recursos, ok!
+
     @GetMapping
     public List<RecursoDto> lista(String nomeAutor){
         if (nomeAutor == null) {
@@ -44,7 +47,7 @@ public class RecursoController {
         }
     }
 
-    // cadastro
+    // cadastrar um recurso
     @PostMapping
     public ResponseEntity<RecursoDto> cadastrar (@RequestBody RecursoForm form, UriComponentsBuilder uriBuilder){
         Recurso recurso = form.converter(autorRepository);
@@ -52,6 +55,29 @@ public class RecursoController {
 
         URI uri = uriBuilder.path("/recursos/{id}").buildAndExpand(recurso.getId()).toUri();
         return ResponseEntity.created(uri).body(new RecursoDto(recurso));
+
+    }
+
+    //um recurso
+    @GetMapping("/{id}")
+    public RecursoDto detalhar(@PathVariable Long id){
+        Recurso recurso = recursoRepository.getById(id);
+        return new RecursoDto(recurso);
+    }
+    // atualizar recurso
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<RecursoDto> atualizar (@PathVariable Long id, @RequestBody RecursoForm form){
+        Recurso recurso = form.atualizar(id, recursoRepository);
+
+        return ResponseEntity.ok(new RecursoDto(recurso));
+    }
+
+    // deletar recurso
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<RecursoDto> remover(@PathVariable Long id){
 
     }
 

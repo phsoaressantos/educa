@@ -11,7 +11,7 @@ public class RecursoForm {
     private String descricao;
     private String data_registro;
     private String data_criacao;
-    private String nomeAutor;
+    private Autor nomeAutor;
 
     public String getTitulo() {
         return titulo;
@@ -45,11 +45,11 @@ public class RecursoForm {
         this.data_criacao = data_criacao;
     }
 
-    public String getNomeAutor() {
+    public Autor getNomeAutor() {
         return nomeAutor;
     }
 
-    public void setNomeAutor(String nomeAutor) {
+    public void setNomeAutor(Autor nomeAutor) {
         this.nomeAutor = nomeAutor;
     }
 
@@ -59,5 +59,16 @@ public class RecursoForm {
         return new Recurso(titulo, descricao, data_registro, data_criacao, autor);
     }
 
+    public Recurso atualizar(Long id, RecursoRepository recursoRepository){
+        Recurso recurso = recursoRepository.getById(id);
+
+        recurso.setTitulo(this.titulo);
+        recurso.setDescricao(this.descricao);
+        recurso.setDataCriacao(this.data_criacao);
+        recurso.setDataRegistro(this.data_criacao);
+        recurso.setAutor(this.nomeAutor);
+
+        return recurso;
+    }
 
 }
