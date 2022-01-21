@@ -6,10 +6,13 @@ import com.example.educa.modelo.Recurso;
 import com.example.educa.repository.AutorRepository;
 import com.example.educa.repository.RecursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -43,10 +46,16 @@ public class RecursoController {
 
     // cadastro
     @PostMapping
-    public void cadastrar (@RequestBody RecursoForm form){
+    public ResponseEntity<RecursoDto> cadastrar (@RequestBody RecursoForm form, UriComponentsBuilder uriBuilder){
         Recurso recurso = form.converter(autorRepository);
         recursoRepository.save(recurso);
 
+        URI uri = uriBuilder.path("/recursos/{id}").buildAndExpand(recurso.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RecursoDto(recurso));
+
     }
+
+    //put ou post para update
+    // delete para deletar, exclusao
 
 }
