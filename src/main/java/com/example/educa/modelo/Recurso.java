@@ -2,6 +2,7 @@ package com.example.educa.modelo;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Recurso {
@@ -27,6 +28,12 @@ public class Recurso {
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Autor autor;
+
+    @OneToMany
+    private List<Colecao> colecaos = new ArrayList<>();
+
+
+    //private List<Resposta> respostas = new ArrayList<>();
 
     public Recurso () {
     }
@@ -97,7 +104,6 @@ public class Recurso {
 // um recurso possui uma lista ordenada de autores
 //    @OneToMany(mappedBy = "autor")
 //    private List<Autor> autores = new ArrayList<>();
-
  //   @OneToMany(mappedBy = "topico")
  //   private List<Resposta> respostas = new ArrayList<>();
 
