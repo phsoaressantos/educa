@@ -26,14 +26,12 @@ public class Recurso {
     private String dataRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "autor_id")
+    //  @JoinColumn (name = "autor_id")
     private Autor autor;
 
-    @OneToMany
+    @OneToMany (mappedBy = "recurso")
     private List<Colecao> colecaos = new ArrayList<>();
 
-
-    //private List<Resposta> respostas = new ArrayList<>();
 
     public Recurso () {
     }
@@ -47,6 +45,14 @@ public class Recurso {
     }
 
     // Get And Setters
+
+    public List<Colecao> getColecaos() {
+        return colecaos;
+    }
+
+    public void setColecaos(List<Colecao> colecaos) {
+        this.colecaos = colecaos;
+    }
 
     public Autor getAutor() {
         return autor;
@@ -95,19 +101,6 @@ public class Recurso {
     public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
-
-//  @OneToMany(mappedBy = "colecao")
-//  private List<Colecao> colecaos = new ArrayList<>();
-
-
-
-// um recurso possui uma lista ordenada de autores
-//    @OneToMany(mappedBy = "autor")
-//    private List<Autor> autores = new ArrayList<>();
- //   @OneToMany(mappedBy = "topico")
- //   private List<Resposta> respostas = new ArrayList<>();
-
-
 
 
 

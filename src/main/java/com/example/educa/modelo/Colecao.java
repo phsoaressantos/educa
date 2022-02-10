@@ -17,6 +17,7 @@ public class Colecao {
     private String descricao;
 
     @ManyToOne
+    @JoinColumn(name = "recurso_id")
     private Recurso recurso;
 
     public Colecao() {
