@@ -1,14 +1,17 @@
 package com.example.educa.modelo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Colecao {
+@Inheritance(strategy = InheritanceType.JOINED)
+
+public class Colecao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long idColecao;
 
     @Column(length = 1024)
     private String titulo;
@@ -23,12 +26,12 @@ public class Colecao {
     public Colecao() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdColecao() {
+        return idColecao;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdColecao(Long idColecao) {
+        this.idColecao = idColecao;
     }
 
     public String getTitulo() {

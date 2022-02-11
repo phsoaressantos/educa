@@ -93,6 +93,6 @@ public class AutorController {
         return ResponseEntity.ok().build();
     }
 
-    //put ou post para update, utizei put
+    //put ou post para update, utilize put
 
 }
