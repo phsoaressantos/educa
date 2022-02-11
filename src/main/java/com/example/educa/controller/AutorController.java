@@ -54,7 +54,7 @@ public class AutorController {
 //        }
 //    }
 
-    // cadastrar um autor
+    // cadastrar
     @PostMapping
     @Transactional
     public ResponseEntity<AutorDto> cadastrar (@RequestBody AutorForm form, UriComponentsBuilder uriBuilder){
@@ -67,33 +67,32 @@ public class AutorController {
     }
 
     //um autor
-    // troca recurso, olhar! daqui p baixoooooooooo#######################
-//    @GetMapping("/{id}")
-//    public RecursoDto detalhar(@PathVariable Long id){
-//        Recurso recurso = autorRepository.getById(id);
-//        return new RecursoDto(recurso);
-//    }
 
-    // atualizar autor
+    @GetMapping("/{id}")
+    public AutorDto detalhar(@PathVariable Long id){
+        Autor autor = autorRepository.getById(id);
+        return new AutorDto(autor);
+    }
 
-//    @PutMapping("/{id}")
-//    @Transactional
-//    public ResponseEntity<RecursoDto> atualizar (@PathVariable Long id, @RequestBody RecursoForm form){
-//        Recurso recurso = form.atualizar(id, autorRepository);
-//
-//        return ResponseEntity.ok(new RecursoDto(recurso));
-//    }
+    // atualizar
 
-    // deletar recurso
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<AutorDto> atualizar (@PathVariable Long id, @RequestBody AutorForm form){
+        Autor autor = form.atualizar(id, autorRepository);
+        return ResponseEntity.ok(new AutorDto(autor));
 
-//    @DeleteMapping("/{id}")
-//    @Transactional
-//    public ResponseEntity<?> remover(@PathVariable Long id){
-//        autorRepository.deleteById(id);
-//        return ResponseEntity.ok().build();
-//    }
+    }
 
-    //put ou post para update
-    // delete para deletar, exclusao
+    // deletar
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> remover(@PathVariable Long id){
+        autorRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    //put ou post para update, utizei put
 
 }
