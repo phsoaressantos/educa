@@ -1,40 +1,27 @@
-package com.example.educa.modelo;
+package com.example.educa.controller.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
+import com.example.educa.modelo.Autor;
+import com.example.educa.modelo.Recurso;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Entity
-public class Autor {
+public class AutorDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
-
-    @Column(length = 256)
     private String email;
-
-    @Column(length = 64)
     private String nome;
-
-    @Column(length = 64)
     private String sobrenome;
-
-    @Column(length = 256)
     private String afiliacao;
-
-    @Column(length = 20)
     private String orcid;
 
-    @OneToMany(mappedBy = "autor")
-    private List<Recurso> recursos = new ArrayList<>();
-
-    public Autor(){
-
-    }
-
-    public Autor(String email, String nome, String sobrenome, String afiliacao, String orcid) {
+    public AutorDto(Autor autor) {
+        this.id = autor.getId();
+        this.email = autor.getEmail();
+        this.nome = autor.getNome();
+        this.sobrenome = autor.getSobrenome();
+        this.afiliacao = autor.getAfiliacao();
+        this.orcid = autor.getOrcid();
     }
 
     public Long getId() {
@@ -85,11 +72,9 @@ public class Autor {
         this.orcid = orcid;
     }
 
-    public List<Recurso> getRecursos() {
-        return recursos;
+        public static List<AutorDto> converter(List<Autor> autores){
+        return autores.stream().map(AutorDto::new).collect(Collectors.toList());
+        
     }
 
-    public void setRecursos(List<Recurso> recursos) {
-        this.recursos = recursos;
-    }
 }

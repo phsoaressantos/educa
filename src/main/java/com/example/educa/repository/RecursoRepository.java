@@ -11,3 +11,5 @@ public interface RecursoRepository extends JpaRepository<Recurso, Long> {
         return null;
     }
 }
+
+//recursoRepository.findByAutor_Nome(nomeAutor);

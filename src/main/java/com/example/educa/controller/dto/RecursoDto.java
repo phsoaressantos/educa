@@ -62,6 +62,7 @@ public class RecursoDto {
     public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
+
     public static List<RecursoDto> converter(List<Recurso> recursos){
         return recursos.stream().map(RecursoDto::new).collect(Collectors.toList());
     }

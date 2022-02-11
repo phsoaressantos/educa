@@ -7,3 +7,6 @@ public interface AutorRepository extends JpaRepository<Autor, Long> {
 
     Autor findByNome(Autor nome);
 }
+
+//  Autor findByNome(Autor nome);
+//recursoRepository.findByAutor_Nome(nomeAutor);

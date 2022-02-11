@@ -56,6 +56,7 @@ public class RecursoForm {
 
     public Recurso converter(AutorRepository autorRepository){
         Autor autor = autorRepository.findByNome(nomeAutor);
+        //Autor findByNome(Autor nome);
         return new Recurso(titulo, descricao, data_registro, data_criacao, autor);
     }
 
