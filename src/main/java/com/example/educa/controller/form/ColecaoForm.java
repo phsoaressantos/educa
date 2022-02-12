@@ -11,18 +11,12 @@ import java.util.List;
 
 public class ColecaoForm {
 
-    private Long idColecao;
+   // private Long idColecao;
     private String titulo;
     private String descricao;
     private Recurso recurso;
 
-    public Long getIdColecao() {
-        return idColecao;
-    }
 
-    public void setIdColecao(Long idColecao) {
-        this.idColecao = idColecao;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -49,9 +43,11 @@ public class ColecaoForm {
     }
 
     public Colecao converter(ColecaoRepository colecaoRepository){
-        List<Colecao> colecoes = colecaoRepository.findAll();
-        return new Colecao();
+       List<Colecao> colecoes = colecaoRepository.findColecaoByDescricao(descricao);
+//        Colecao colecao = colecaoRepository.findAllById(id);
+        return new Colecao(titulo, descricao, recurso);
     }
+
 
     public Colecao atualizar(Long id, ColecaoRepository colecaoRepository){
         Colecao colecao = colecaoRepository.getById(id);

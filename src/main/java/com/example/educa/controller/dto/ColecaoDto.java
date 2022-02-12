@@ -54,6 +54,7 @@ public class ColecaoDto {
     public void setRecurso(Recurso recurso) {
         this.recurso = recurso;
     }
+
     public static List<ColecaoDto> converter(List<Colecao> colecoes){
         return colecoes.stream().map(ColecaoDto::new).collect(Collectors.toList());
     }

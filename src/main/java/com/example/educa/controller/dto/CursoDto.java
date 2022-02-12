@@ -2,6 +2,10 @@ package com.example.educa.controller.dto;
 
 
 import com.example.educa.modelo.Curso;
+import com.example.educa.modelo.Evento;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CursoDto {
 
@@ -18,4 +22,9 @@ public class CursoDto {
     public void setDataRegistro(String dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
+
+    public static List<CursoDto> converter(List<Curso> cursos) {
+        return cursos.stream().map(CursoDto::new).collect(Collectors.toList());
+    }
+
 }

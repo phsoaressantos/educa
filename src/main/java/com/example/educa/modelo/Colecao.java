@@ -26,6 +26,9 @@ public class Colecao implements Serializable {
     public Colecao() {
     }
 
+    public Colecao(String titulo, String descricao, Recurso recurso) {
+    }
+
     public Long getIdColecao() {
         return idColecao;
     }
