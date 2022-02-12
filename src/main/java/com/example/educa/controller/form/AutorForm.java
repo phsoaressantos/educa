@@ -14,7 +14,7 @@ public class AutorForm {
     private String sobrenome;
     private String afiliacao;
     private String orcid;
-    private String nomeAutor;
+    private String nomeAutor;                                                // retorar
 
     public String getEmail() {
         return email;
