@@ -10,7 +10,3 @@ public interface ColecaoRepository extends JpaRepository<Colecao, Long> {
 
     List<Colecao> findColecaoByDescricao(String descricao);
 }
-
-
-//     List<Recurso> findByAutor_Nome(String nomeAutor);
-//}
