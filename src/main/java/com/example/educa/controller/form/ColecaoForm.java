@@ -49,12 +49,12 @@ public class ColecaoForm {
     }
 
     public Colecao converter(ColecaoRepository colecaoRepository){
-        List<Colecao> colecoes = colecaoRepository.findAll();            // duvida se vai passar ou nao?
+        List<Colecao> colecoes = colecaoRepository.findAll();
         return new Colecao();
     }
 
     public Colecao atualizar(Long id, ColecaoRepository colecaoRepository){
-        Colecao colecao = colecaoRepository.getById(idColecao);                  // confirmar se vai pegar id
+        Colecao colecao = colecaoRepository.getById(id);
 
         colecao.setTitulo(this.titulo);
         colecao.setDescricao(this.descricao);
