@@ -14,7 +14,7 @@ public class AutorForm {
     private String sobrenome;
     private String afiliacao;
     private String orcid;
-    private String nomeAutor;                                                // retorar
+    private String nomeAutor;
 
     public String getEmail() {
         return email;
@@ -61,11 +61,11 @@ public class AutorForm {
         List<Recurso> recurso = recursoRepository.findByAutor_Nome(nomeAutor);
         return new Autor(email, nome, sobrenome, afiliacao, orcid);
     }
-
-//    public Autor converter(AutorRepository autorRepository){
-//        Autor autor = autorRepository.findByNome(nomeAutor);
+//    public Autor converter(RecursoRepository recursoRepository){
+//        List<Recurso> recurso = recursoRepository.findByAutor_Nome(nomeAutor);
 //        return new Autor(email, nome, sobrenome, afiliacao, orcid);
 //    }
+
 
     public Autor atualizar(Long id, AutorRepository autorRepository){
         Autor autor = autorRepository.getById(id);

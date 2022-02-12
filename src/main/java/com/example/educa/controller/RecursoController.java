@@ -65,6 +65,8 @@ public class RecursoController {
         Recurso recurso = recursoRepository.getById(id);
         return new RecursoDto(recurso);
     }
+
+
     // atualizar recurso
 
     @PutMapping("/{id}")

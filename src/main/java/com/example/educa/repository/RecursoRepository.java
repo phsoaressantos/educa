@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface RecursoRepository extends JpaRepository<Recurso, Long> {
 
-    default List<Recurso> findByAutor_Nome(String nomeAutor) {
-        return null;
-    }
+    List<Recurso> findByAutor_Nome(String nomeAutor);
 }
 
 //recursoRepository.findByAutor_Nome(nomeAutor);
+
+//    default List<Recurso> findByAutor_Nome(String nomeAutor) {
+//        return null;
+//    }
